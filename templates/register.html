@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<style>
+  .registrform1 {
+    font-family: 'Arial', sans-serif;
+    background-color: #fffdd0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .flashes {
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+  background-color: #fffdd0;
+}
+
+.flashes li {
+  color: green;
+  font-size: 24px;
+}
+
+  form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+
+  h2 {
+    color: #ff8c00;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 2px solid #ff8c00;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  #submitt {
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ff8c00;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  #submitt:hover {
+     background-color: #ff6347;
+  }
+   #username {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 2px solid #ff8c00; /* Orange border color */
+    border-radius: 8px;
+    outline: none;
+  }
+
+</style>
+
+<section class="registrform1">
+  <form method="post">
+    <h2 class="mb-4"> Registration Form</h2>
+    {{ form.hidden_tag() }}
+    {{ form.username(id="username", class="mt-2", placeholder=form.username.label.text) }}
+    {{ form.password(id="password",  class="mt-2", placeholder=form.password.label.text) }}
+    {{ form.repeat_password(id="password",  class="mt-2", placeholder=form.repeat_password.label.text) }}
+    {{ form.register(id="submitt") }}
+
+    <p class="pt-3">Already have an account? <a href="/login">Log in</a></p>
+  </form>
+</section>
+
+{% endblock %}

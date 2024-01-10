@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+ <style>
+    .paymentbody {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .payment-form {
+      width: 500px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+
+    .success-message {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 438px;
+    }
+  </style>
+
+<section class="paymentbody">
+  <div class="payment-form">
+    <div class="form-group">
+      <label for="card-number">Card Number:</label>
+      <input type="text" id="card-number" placeholder="Enter card number" maxlength="19" class="input-field">
+      <div id="card-number-error" class="error-message"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="expiry-date">Expiry Date:</label>
+      <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" class="input-field">
+      <div id="expiry-date-error" class="error-message"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" placeholder="Enter CVV" maxlength="3" class="input-field">
+      <div id="cvv-error" class="error-message"></div>
+    </div>
+
+    <button id="buy-button">Buy</button>
+
+    <div id="payment-result" class="success-message"></div>
+  </div>
+</section>
+
+  <script>
+    document.getElementById('buy-button').addEventListener('click', function () {
+      validateForm();
+    });
+
+    function validateForm() {
+      clearErrorMessages();
+
+      const cardNumber = document.getElementById('card-number').value;
+      const expiryDate = document.getElementById('expiry-date').value;
+      const cvv = document.getElementById('cvv').value;
+
+      if (!cardNumber || cardNumber.length !== 19) {
+        displayErrorMessage('card-number-error', 'Please enter a valid 16-digit card number.');
+        return;
+      }
+
+      if (!expiryDate || !/^\d{2}\/\d{2}$/.test(expiryDate)) {
+        displayErrorMessage('expiry-date-error', 'Please enter a valid expiry date in MM/YY format.');
+        return;
+      }
+
+      if (!cvv || cvv.length !== 3) {
+        displayErrorMessage('cvv-error', 'Please enter a valid 3-digit CVV.');
+        return;
+      }
+
+      makePayment();
+    }
+
+    function makePayment() {
+      // Simulate payment processing (in a real-world scenario, this should be done on the server)
+      // For simplicity, we'll just display a success message here.
+      document.getElementById('payment-result').innerText = 'Successfully purchased!';
+    }
+
+    function clearErrorMessages() {
+      const errorElements = document.querySelectorAll('.error-message');
+      errorElements.forEach((element) => (element.innerText = ''));
+    }
+
+    function displayErrorMessage(elementId, message) {
+      document.getElementById(elementId).innerText = message;
+    }
+  </script>
+
+
+{% endblock %}

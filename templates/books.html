@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .card-body h5, a {
+    color: black;
+    text-decoration: none;
+    }
+</style>
+
+
+<section>
+    <div class="bookyidva">
+        <div>
+            <h1>Get Book Copy Today!</h1>
+            <p>A well-chosen book can make a person see themselves anew; it can be the push to make a life-changing
+                decision; it can say "I know you" like nothing else.</p>
+            <button type="button" class="btn btn-outline-dark"><a href="/publish_yours">Publish Yours</a></button>
+        </div>
+        <img src="https://anndarba.github.io/Final-Project-Anadarbaidze/images/Photo.png" alt="">
+    </div>
+</section>
+
+
+<section class="listup">
+    <h1>Our Latest Books!</h1>
+    <p>Scroll down to view more books and publish yours!</p>
+</section>
+
+<hr>
+
+
+<section>
+    <div id="bookslist" class="container">
+        {% for book in books %}
+        <div class="card" style="width: 18rem;">
+
+            <img src="../static/img/{{ book.image }}" class="card-img-top"
+                 alt="Chicago Skyscrapers"/>
+            <div class="card-body">
+                <a href="/view_book/{{book.id}}"><h5 class="card-title">{{ book.title }}</h5></a>
+                <p class="card-text">{{ book.description }}</p>
+            </div>
+            <ul class="list-group list-group-light list-group-small">
+                <li class="list-group-item px-4">Price: {{ book.price }} ₾</li>
+                <li class="list-group-item px-4">By: {{ book.author }}</li>
+            </ul>
+
+            <ul class="list-group list-group-flush">
+                {% if current_user.role == "admin" %}
+                <li class="list-group-item">
+                    <a href="/edit_book/{{ book.id }}" class="btn btn-outline-success">
+                        Edit book
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/delete_book/{{ book.id }}" class="btn btn-danger">
+                        Delete book
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}
+
+

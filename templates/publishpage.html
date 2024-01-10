@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="PublishUp">
+    <div>
+        <h2>Publish your own book!</h2>
+        <h5>If you have a book that you would like to share, you can do it down below!</h5>
+    </div>
+</section>
+
+
+<section class="s11v2">
+    <div class="login12">
+        <div class="fileinsert">
+            <form method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="booktitle">
+                    <div>
+                {{ form.image(class="form-control bookimage", placeholder=form.image.label.text) }}
+                    </div>
+                    <div>
+                    {{ form.title(id="ffname", placeholder=form.title.label.text) }}
+                    </div>
+                </div>
+                <div class="message1 pt-2">
+                    <p>Description</p>
+                    {{ form.description(placeholder=form.description.label.text) }}
+                </div>
+                <div class="PriceName">
+                    <div>
+                        {{ form.price(id=ffname, placeholder=form.price.label.text) }}
+                    </div>
+                    <div>
+                        {{ form.author(id=ffname, placeholder=form.author.label.text) }}
+                    </div>
+                </div>
+                <div class="Submit1">
+                     {{ form.submit(class="btn btn-warning mt-2") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

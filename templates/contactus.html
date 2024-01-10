@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% set messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alertcss" id="success-alert" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://www.pixelstalk.net/wp-content/uploads/2016/06/Amazing-Old-Book-Desktop-Wallpapers.jpg"
+                 class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://images7.alphacoders.com/133/1338193.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://rare-gallery.com/thumbs/4550481-coffee-fall-depth-of-field-books-leaves.jpg"
+                 class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<section class="s11">
+    <div class="s11up">
+        <h1>Contact Us</h1>
+        <h4>If you have any questions about books, Publishers or in general about this topic. Please feel free
+            to contact us anytime and ask!</h4>
+    </div>
+    <div class="login1">
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="contactt1">
+                <div>
+                    <p>Name</p>
+                    {{ form.name(id="fname", placeholder=form.name.label.text) }}
+                </div>
+
+                <div>
+                    <p>Email</p>
+                    {{ form.email(id="fname", placeholder=form.email.label.text) }}
+                </div>
+            </div>
+
+            <div class="contactt2">
+                <div>
+                    <p>Subject</p>
+                    {{ form.subject(id="fname", placeholder=form.subject.label.text) }}
+                </div>
+
+                <div>
+                    <p>Telephone</p>
+                    {{ form.telephone(id="fname", placeholder=form.telephone.label.text) }}
+                </div>
+            </div>
+                <div class="message">
+                    <p>Message</p>
+                    {{ form.yourmessage(id="fname", placeholder=form.yourmessage.label.text) }}
+                </div>
+
+                <div class="Submit">
+                    {{ form.submit() }}
+                </div>
+        </form>
+    </div>
+</section>
+
+
+{% endblock %}
+
