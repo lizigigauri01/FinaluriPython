@@ -108,3 +108,4 @@ if __name__ == "__main__":
 
         admin_user = User(username="admin_user", password="lizi", role="admin")
         admin_user.create()
+
